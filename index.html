@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>-->
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>商品详情</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/detail-goods.css" rel="stylesheet">
+
+
+
+
+    <script src="js/zepto.min.js"></script>
+    <script src="js/touch.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script src="js/common.js"></script>
+
+
+</head>
+<body style="font-family: serif;" class="ng-scope">
+<div  class="g-body ng-scope">
+
+    <div class="g-body ng-scope">
+        <div class="m-detail">
+            <div id="scroller_product_detail" style="margin-top: 45px; height: 646px; overflow: scroll;">
+                <div class="g-wrap" style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+                    <div class="g-wrap-hd">
+                        <div class="move" style="width: 210px;margin:0 auto;height: 210px;">
+                            <ul class="goods-tab">
+                                <li class="tab-list selected"></li>
+                                <li class="tab-list"></li>
+                                <li class="tab-list"></li>
+                            </ul>
+                            <div class="row-fluid">
+                                <img  src="images/1.png" data-id="0" >
+                                <img  src="images/2.png" data-id="1" >
+                                <img  src="images/3.png" data-id="2" >
+                            </div>
+                        </div>
+                        <div class="w-goods w-goods-xxl m-detail-goods">
+                            <div class="w-goods-info">
+                                <p class="w-goods-title"><button class="w-button ng-binding" style="padding:0 2px;margin-right: 5px;" ng-bind="tag">进行中</button><span ng-bind="goodsInfo.title" class="ng-binding">英雄联盟LOL:199元档皮肤</span></p>
+                                <p class="w-goods-period">期号：<span ng-bind="goodsInfo.qishu" class="ng-binding">1</span></p>
+
+                                <div class="w-progressBar">
+                                    <p class="wrap">
+                                        <span class="bar" style="width:1%;"><i class="color"></i></span>
+                                    </p>
+                                    <ul class="txt">
+                                        <li class="txt-l"><p>总需 <span ng-bind="goodsInfo.zongrenshu" class="ng-binding">222</span> 人次</p></li>
+                                        <li class="txt-r"><p>剩余<b class="txt-red ng-binding" ng-bind="goodsInfo.zongrenshu - goodsInfo.canyurenshu">221</b></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--lucker-->
+                        <div class="lucker-wrap">
+                            <div class="lucker">
+                                <div class="red-title">
+                                    <p>幸运号码&nbsp&nbsp&nbsp&nbsp29384753<p>
+                                </div>
+                                <div class="box">
+                                    <div class="lucker-head">
+                                    </div>
+                                    <div class="lucker-content">
+                                        <ul>
+                                            <li class="a">获得者：<i class="red-i">流浪的迪潘</i></li>
+                                            <li class="b">用户ID：76152369</li>
+                                            <li class="c">期号：303212690</li>
+                                            <li class="d">本期参与：1000人次</li>
+                                            <li class="e">揭晓时间：2016-04-11 13:45</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-detail-userCodes">
+                            <!-- ngIf: notLogin --><p class="m-detail-userCodes-blank ng-scope"><a href="#/tab/login"><b style="color: #db4452;">请登录</b></a>，查看你的神马号！</p><!-- end ngIf: notLogin -->
+                            <!-- ngIf: notJoin -->
+                            <!-- ngIf: isJoin -->
+                        </div>
+                    </div>
+                    <div class="g-wrap-bd">
+                        <div class="m-detail-more">
+                            <a href="#/tab/productInfo?id=3" class="w-bar">
+                                <i class="icon-pic"></i>图文详情<span class="w-bar-ext"><b class="ico-next"></b></span>
+                            </a>
+                            <a href="#/tab/passedPublish?sid=3" class="w-bar">
+                                <i class="icon-record"></i>往期揭晓<span class="w-bar-ext"><b class="ico-next"></b></span>
+                            </a>
+                            <a href="#/tab/productShare?sid=3" class="w-bar">
+                                <i class="icon-detail-share"></i>晒单分享<span class="w-bar-ext"><b class="ico-next"></b></span>
+                            </a>
+                        </div>
+                        <div id="contain" class="m-detail-record">
+                            <div class="w-bar">所有参与记录 <span class="w-bar-hint">自<span class="ng-binding">2016-05-12 10:13:54</span>开始</span></div>
+                            <div class="m-detail-record-wrap" style="padding-bottom: 5px;">
+                                <div class="m-detail-record-list">
+                                    <div class="record-list-one">
+                                        <div class="record-head"></div>
+                                        <div class="record-content">
+                                            <ul>
+                                                <li class="red-i">流浪的迪潘</li>
+                                                <li>北京市朝阳区IP111.11.111</li>
+                                                <li>2016-04-11&nbsp13:45</li>
+                                            </ul>
+                                        </div>
+                                        <span class="record-num"><i class="red-i">100</i><i class="gray-i">人次</i></span>
+                                    </div>
+                                    <div class="record-list-one">
+                                        <div class="record-head"></div>
+                                        <div class="record-content">
+                                            <ul>
+                                                <li class="red-i">流浪的迪潘</li>
+                                                <li>北京市朝阳区IP111.11.111</li>
+                                                <li>2016-04-11&nbsp13:45</li>
+                                            </ul>
+                                        </div>
+                                        <span class="record-num"><i class="red-i">100</i><i class="gray-i">人次</i></span>
+                                    </div>
+                                    <div class="record-list-one">
+                                        <div class="record-head"></div>
+                                        <div class="record-content">
+                                            <ul>
+                                                <li class="red-i">流浪的迪潘</li>
+                                                <li>北京市朝阳区IP111.11.111</li>
+                                                <li>2016-04-11&nbsp13:45</li>
+                                            </ul>
+                                        </div>
+                                        <span class="record-num"><i class="red-i">100</i><i class="gray-i">人次</i></span>
+                                    </div>
+                                    <div class="record-list-one">
+                                        <div class="record-head"></div>
+                                        <div class="record-content">
+                                            <ul>
+                                                <li class="red-i">流浪的迪潘</li>
+                                                <li>北京市朝阳区IP111.11.111</li>
+                                                <li>2016-04-11&nbsp13:45</li>
+                                            </ul>
+                                        </div>
+                                        <span class="record-num"><i class="red-i">100</i><i class="gray-i">人次</i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ngIf: noData --><div style="text-align: center;margin-top: 10px;display: none;">暂无参与记录</div><!-- end ngIf: noData -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-simpleFooter m-detail-buy" style="position: relative;">
+                <div class="m-simpleFooter-text ng-scope" style="text-align:center;">
+                    <a class="w-button w-button-main" href="#/tab/shopList" style="font-size: 13px;font-weight: bold;border-radius: 5px;margin-right: 10px;color: #fff;">立即参与</a>
+                    <a style="font-size: 13px;font-weight: bold;border-radius: 5px;color: #fb5353;" id="addToCart" class="w-button" href="javascript:;">加入竞单</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/detailgoods-tab.js"></script>
+ <!--jQuery (necessary for Bootstrap's JavaScript plugins)-->
+<script src="js/jquery.min.js"></script>
+<script src="js/jQuery.md5.js"></script>
+<script src="js/cart.js"></script>
+ <!--Include all compiled plugins (below), or include individual files as needed-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+
+<script type="text/javascript">
+    $.extend($.fn,{
+        fnTimeCountDown:function(d,callback){
+            this.each(function(){
+                var $this = $(this);
+                var o = {
+                    hm: $this.find(".hm"),
+                    sec: $this.find(".sec"),
+                    mini: $this.find(".mini"),
+                    hour: $this.find(".hour"),
+                    day: $this.find(".day"),
+                    month:$this.find(".month"),
+                    year: $this.find(".year")
+                };
+                var f = {
+                    haomiao: function(n){
+                        if(n < 10)return "00" + n.toString();
+                        if(n < 100)return "0" + n.toString();
+                        return n.toString();
+                    },
+                    zero: function(n){
+                        var _n = parseInt(n, 10);//解析字符串,返回整数
+                        if(_n > 0){
+                            if(_n <= 9){
+                                _n = "0" + _n
+                            }
+                            return String(_n);
+                        }else{
+                            return "00";
+                        }
+                    },
+                    dv: function(){
+                        //d = d || Date.UTC(2050, 0, 1); //如果未定义时间，则我们设定倒计时日期是2050年1月1日
+                        var _d = d;
+                        timeold = _d-(new Date().getTime());
+                        //现在将来秒差值
+                        //alert(future.getTimezoneOffset());
+                        var pms = {
+                            hm:"000",
+                            sec: "00",
+                            mini: "00",
+                            hour: "00",
+                            day: "00",
+                            month: "00",
+                            year: "0"
+                        };
+                        if(timeold > 0){
+                            sectimeold=timeold/1000
+                            secondsold=Math.floor(sectimeold);
+                            msPerDay=24*60*60*1000
+                            e_daysold=timeold/msPerDay
+                            daysold=Math.floor(e_daysold); 				//天
+                            e_hrsold=(e_daysold-daysold)*24;
+                            hrsold=Math.floor(e_hrsold); 				//时
+                            e_minsold=(e_hrsold-hrsold)*60;
+                            //分
+                            minsold=Math.floor((e_hrsold-hrsold)*60);
+                            minsold = (minsold<10?'0'+minsold:minsold)
+                            minsold = new String(minsold);
+                            minsold_1 = minsold.substr(0,1);
+                            minsold_2 = minsold.substr(1,1);
+
+                            //秒
+                            e_seconds = (e_minsold-minsold)*60;
+                            seconds=Math.floor((e_minsold-minsold)*60);
+                            seconds = (seconds<10?'0'+seconds:seconds)
+                            seconds = new String(seconds);
+                            seconds_1 = seconds.substr(0,1);
+                            seconds_2 = seconds.substr(1,1);
+                            //毫秒
+                            ms = e_seconds-seconds;
+                            ms = new String(ms)
+                            ms_1 = ms.substr(2,1);
+                            ms_2 = ms.substr(3,1);
+
+
+                            pms.hm = ms_1+''+ms_2;
+                            pms.sec = seconds_1+''+seconds_2;
+                            pms.mini = minsold_1+''+minsold_2;
+                            pms.hour = hrsold>10?hrsold:'0'+hrsold;
+                            pms.day = daysold;
+                        }else{
+                            pms.year=pms.month=pms.day=pms.hour=pms.mini=pms.sec="00";
+                            pms.hm = "000";
+                            callback();
+                            //alert('结束了');
+                            //return;
+                        }
+                        return pms;
+                    },
+                    ui: function(){
+                        if(o.hm){
+                            o.hm.html(f.dv().hm);
+                        }
+                        if(o.sec){
+                            o.sec.html(f.dv().sec);
+                        }
+                        if(o.mini){
+                            o.mini.html(f.dv().mini);
+                        }
+                        if(o.hour){
+                            o.hour.html(f.dv().hour);
+                        }
+                        if(o.day){
+                            o.day.html(f.dv().day);
+                        }
+                        if(o.month){
+                            o.month.html(f.dv().month);
+                        }
+                        if(o.year){
+                            o.year.html(f.dv().year);
+                        }
+                        setTimeout(f.ui, 1);
+                    }
+                };
+                f.ui();
+            });
+        }
+    });
+
+    var weChat = function(){
+        $("#mcover").css("display","none");
+    };
+</script>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<script type="text/javascript">-->
+<!--$.extend($.fn,{-->
+        <!--fnTimeCountDown:function(d,callback){-->
+            <!--this.each(function(){-->
+                <!--var $this = $(this);-->
+                <!--var o = {-->
+                    <!--hm: $this.find(".hm"),-->
+                    <!--sec: $this.find(".sec"),-->
+                    <!--mini: $this.find(".mini"),-->
+                    <!--hour: $this.find(".hour"),-->
+                    <!--day: $this.find(".day"),-->
+                    <!--month:$this.find(".month"),-->
+                    <!--year: $this.find(".year")-->
+                <!--};-->
+                <!--var f = {-->
+                    <!--haomiao: function(n){-->
+                        <!--if(n < 10)return "00" + n.toString();-->
+                        <!--if(n < 100)return "0" + n.toString();-->
+                        <!--return n.toString();-->
+                    <!--},-->
+                    <!--zero: function(n){-->
+                        <!--var _n = parseInt(n, 10);//解析字符串,返回整数-->
+                        <!--if(_n > 0){-->
+                            <!--if(_n <= 9){-->
+                                <!--_n = "0" + _n-->
+                            <!--}-->
+                            <!--return String(_n);-->
+                        <!--}else{-->
+                            <!--return "00";-->
+                        <!--}-->
+                    <!--},-->
+                    <!--dv: function(){-->
+                        <!--//d = d || Date.UTC(2050, 0, 1); //如果未定义时间，则我们设定倒计时日期是2050年1月1日-->
+                        <!--var _d = d;-->
+						<!--timeold = _d-(new Date().getTime());-->
+                        <!--//现在将来秒差值-->
+                        <!--//alert(future.getTimezoneOffset());-->
+                        <!--var pms = {-->
+                            <!--hm:"000",-->
+                            <!--sec: "00",-->
+                            <!--mini: "00",-->
+                            <!--hour: "00",-->
+                            <!--day: "00",-->
+                            <!--month: "00",-->
+                            <!--year: "0"-->
+                        <!--};-->
+                        <!--if(timeold > 0){-->
+							<!--sectimeold=timeold/1000-->
+							<!--secondsold=Math.floor(sectimeold); -->
+							<!--msPerDay=24*60*60*1000-->
+							<!--e_daysold=timeold/msPerDay 	-->
+							<!--daysold=Math.floor(e_daysold); 				//天	-->
+							<!--e_hrsold=(e_daysold-daysold)*24; -->
+							<!--hrsold=Math.floor(e_hrsold); 				//时-->
+							<!--e_minsold=(e_hrsold-hrsold)*60;	-->
+							<!--//分-->
+							<!--minsold=Math.floor((e_hrsold-hrsold)*60);-->
+							<!--minsold = (minsold<10?'0'+minsold:minsold)-->
+							<!--minsold = new String(minsold);-->
+							<!--minsold_1 = minsold.substr(0,1);-->
+							<!--minsold_2 = minsold.substr(1,1);	-->
+
+							<!--//秒-->
+							<!--e_seconds = (e_minsold-minsold)*60;	-->
+							<!--seconds=Math.floor((e_minsold-minsold)*60);-->
+							<!--seconds = (seconds<10?'0'+seconds:seconds)-->
+							<!--seconds = new String(seconds);-->
+							<!--seconds_1 = seconds.substr(0,1);-->
+							<!--seconds_2 = seconds.substr(1,1);	-->
+							<!--//毫秒	-->
+							<!--ms = e_seconds-seconds;-->
+							<!--ms = new String(ms)-->
+							<!--ms_1 = ms.substr(2,1);-->
+							<!--ms_2 = ms.substr(3,1);-->
+								<!-- -->
+								<!-- -->
+                            <!--pms.hm = ms_1+''+ms_2;-->
+                            <!--pms.sec = seconds_1+''+seconds_2;-->
+                            <!--pms.mini = minsold_1+''+minsold_2;-->
+                            <!--pms.hour = hrsold>10?hrsold:'0'+hrsold;-->
+                            <!--pms.day = daysold;-->
+                        <!--}else{-->
+                            <!--pms.year=pms.month=pms.day=pms.hour=pms.mini=pms.sec="00";-->
+                            <!--pms.hm = "000";-->
+							<!--callback();-->
+                            <!--//alert('结束了');-->
+                            <!--//return;-->
+                        <!--}-->
+                        <!--return pms;-->
+                    <!--},-->
+                    <!--ui: function(){-->
+                        <!--if(o.hm){-->
+                            <!--o.hm.html(f.dv().hm);-->
+                        <!--}-->
+                        <!--if(o.sec){-->
+                            <!--o.sec.html(f.dv().sec);-->
+                        <!--}-->
+                        <!--if(o.mini){-->
+                            <!--o.mini.html(f.dv().mini);-->
+                        <!--}-->
+                        <!--if(o.hour){-->
+                            <!--o.hour.html(f.dv().hour);-->
+                        <!--}-->
+                        <!--if(o.day){-->
+                            <!--o.day.html(f.dv().day);-->
+                        <!--}-->
+                        <!--if(o.month){-->
+                            <!--o.month.html(f.dv().month);-->
+                        <!--}-->
+                        <!--if(o.year){-->
+                            <!--o.year.html(f.dv().year);-->
+                        <!--}-->
+                        <!--setTimeout(f.ui, 1);-->
+                    <!--}-->
+                <!--};-->
+                <!--f.ui();-->
+            <!--});-->
+        <!--}-->
+    <!--});-->
+    <!-- -->
+<!--var weChat = function(){-->
+    <!--$("#mcover").css("display","none");-->
+<!--};-->
+<!--</script>-->
+
+
+
+</html>

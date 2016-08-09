@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no, email=no">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script src="js/common.js"></script>
+
+    <style>
+        #mcover {position: fixed;top: 0;left: 0;width: 100%;height: 100%; background: rgba(0, 0, 0, 0.7); display: none; z-index: 20000; }
+        #mcover img { position: fixed;right: 18px;top: 5px;width: 100%!important;z-index: 20001; }
+    </style>
+</head>
+<body ng-app="app" ng-controller="indexCtrl" style="font-family: serif;">
+
+<div style="display: none;" id="headerId" class="g-header" ng-controller="headerCtrl">
+    <div class="navbar navbar-default navbar-static-top m-header" style="margin-bottom: 0;padding: 0;">
+        <div>
+            <ul class="m-nav-list" style="line-height: 10px;">
+                <li class="logo">
+                    <img src="images/logo.png">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div ng-view class="g-body"></div>
+
+<a style="display: none;" href="javascript:;" class="w-button-top w-button-round w-button-backToTop pull-right" id="proId">返回顶部</a>
+<a style="display: none;" id="shopList" class="w-miniCart" href="#/tab/shopList"><i class="ico-miniCart"></i><b class="w-miniCart-count" ng-bind="shopList.length"></b></a>
+
+
+
+<div style="margin-top: 200px;" class="modal" id="updateModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 200px;margin: 0 auto;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <p><img style="width: 50px;margin-bottom: 10px;" src="images/icon/success_icon.png"></p>
+                <p><h4>更新密码成功</h4></p>
+                <a href="javascript:;" data-dismiss="modal" ng-click="login();" class="btn btn-block" style="background: #db3652; border-color: #b6243d;color: #fff;font-size: 14px;font-weight: bold;margin-top: 10px;">马上登陆</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div style="margin-top: 200px;" class="modal" id="rigisterModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 200px;margin: 0 auto;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <p><img style="width: 50px;margin-bottom: 10px;" src="images/icon/success_icon.png"></p>
+                <p><h4>注册成功</h4></p>
+                <a href="javascript:;" data-dismiss="modal" ng-click="login();" class="btn btn-block" style="background: #db3652; border-color: #b6243d;color: #fff;font-size: 14px;font-weight: bold;margin-top: 10px;">马上登陆</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div style="margin-top: 200px;max-height: 200px;" class="modal" id="alertModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 240px;margin: 0 auto;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <p><h4 ng-bind="alertMsg" style="line-height: 2;word-wrap: break-word;"></h4></p>
+            </div>
+            <div class="modal-footer" style="padding:5px;">
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-block" style="background: #fff;">关闭</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div style="margin-top: 200px;max-height: 200px;" class="modal" id="confirmModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 280px;margin: 0 auto;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <div class="w-msgbox-bd"><h3 class="w-msgbox-title" ng-bind="confirmMsg"></h3></div>
+            </div>
+            <div class="modal-footer w-msgbox-ft w-msgbox-ft-2" style="padding:0;">
+                <a href="javascript:;" class="pro-btn" ng-click="confirmExecute()"><span>确定</span></a>
+                <a href="javascript:;" class="pro-btn" data-dismiss="modal" aria-hidden="true"><span>取消</span></a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal" id="addressModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <a ng-click="addNewAddress()" href="javascript:;">添加新地址</a>
+                </h4>
+            </div>
+            <div class="modal-body" style="padding: 0;">
+                <div ng-show="!choosed">
+                    <div class="radio" style="padding: 10px 15px;border-bottom: 1px solid #dcdcdc;" ng-repeat="address in userAddress">
+                        <label>
+                            <input ng-checked="{{$index == 0}}" type="radio" name="addressRadios"  value="{{address.id}}" style="width: 15px;height: 15px;">
+                            <div>
+                                <p style="margin-bottom: 5px;color: #656565;font-size: 12px;"><span ng-bind="address.shouhuoren"></span><span class="pull-right" ng-bind="address.mobile"></span></p>
+                                <p style="color: #656565;font-size: 12px;"><span style="color: #0079fe" ng-if="address.is_default == 'Y'">[默认]</span><span ng-bind="address.address"></span></p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div ng-show="choosed" style="padding: 10px 15px;">
+                    <p style="margin-bottom: 5px;">请再次确认收货地址：</p>
+                    <div style="background: #fff1e5;padding: 5px;">
+                        <p style="margin-bottom: 5px;color: #656565;font-size: 12px;"><span ng-bind="address_c.shouhuoren"></span><span class="pull-right" ng-bind="address_c.mobile"></span></p>
+                        <p style="color: #656565;font-size: 12px;"><span style="color: #0079fe" ng-if="address_c.is_default == 'Y'">[默认]</span><span ng-bind="address_c.address"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer w-msgbox-ft w-msgbox-ft-2" style="padding:0;">
+                <a href="javascript:;" class="pro-btn" ng-click="addressExecute()"><span>确定</span></a>
+                <a href="javascript:;" class="pro-btn" ng-click="hideAddress()"><span>取消</span></a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div style="height: 60px;" class="modal" id="loadingModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100px;margin: 0 auto;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;padding: 0;">
+                <img src="images/icon/loading.gif" style="width: 50px;">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    所有参与号码：
+                </h4>
+            </div>
+            <div class="modal-body" style="padding: 0;overflow-y: auto;height: 300px;">
+                <ul class="w-msgbox-codes" style="padding: 0 0 0 20px;">
+                    <li ng-class="{true: 'win-code-color', false: ''}[winCode == showmsg]" ng-repeat="showmsg in showMsg" ng-bind="showmsg"></li>
+                </ul>
+            </div>
+            <div class="modal-footer" style="padding: 5px;">
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-block" style="background: #fff;">关闭</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="picModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="position: absolute;bottom: 0;margin: 0 auto;width: 100%;max-height: 100%;">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center;">
+                <img ng-src="{{picUrl}}">
+            </div>
+            <div class="modal-footer" style="padding: 5px;">
+                <a href="javascript:;" data-dismiss="modal" class="btn btn-block" style="background: #fff;">关闭</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div id="mcover" onclick="weChat()" style="display:none;">
+    <img src="images/dowload1.png">
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jQuery.md5.js"></script>
+<script src="js/cart.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
+<script type="text/javascript">
+$.extend($.fn,{
+        fnTimeCountDown:function(d,callback){
+            this.each(function(){
+                var $this = $(this);
+                var o = {
+                    hm: $this.find(".hm"),
+                    sec: $this.find(".sec"),
+                    mini: $this.find(".mini"),
+                    hour: $this.find(".hour"),
+                    day: $this.find(".day"),
+                    month:$this.find(".month"),
+                    year: $this.find(".year")
+                };
+                var f = {
+                    haomiao: function(n){
+                        if(n < 10)return "00" + n.toString();
+                        if(n < 100)return "0" + n.toString();
+                        return n.toString();
+                    },
+                    zero: function(n){
+                        var _n = parseInt(n, 10);//解析字符串,返回整数
+                        if(_n > 0){
+                            if(_n <= 9){
+                                _n = "0" + _n
+                            }
+                            return String(_n);
+                        }else{
+                            return "00";
+                        }
+                    },
+                    dv: function(){
+                        //d = d || Date.UTC(2050, 0, 1); //如果未定义时间，则我们设定倒计时日期是2050年1月1日
+                        var _d = d;
+						timeold = _d-(new Date().getTime());
+                        //现在将来秒差值
+                        //alert(future.getTimezoneOffset());
+                        var pms = {
+                            hm:"000",
+                            sec: "00",
+                            mini: "00",
+                            hour: "00",
+                            day: "00",
+                            month: "00",
+                            year: "0"
+                        };
+                        if(timeold > 0){
+							sectimeold=timeold/1000
+							secondsold=Math.floor(sectimeold); 
+							msPerDay=24*60*60*1000
+							e_daysold=timeold/msPerDay 	
+							daysold=Math.floor(e_daysold); 				//天	
+							e_hrsold=(e_daysold-daysold)*24; 
+							hrsold=Math.floor(e_hrsold); 				//时
+							e_minsold=(e_hrsold-hrsold)*60;	
+							//分
+							minsold=Math.floor((e_hrsold-hrsold)*60);
+							minsold = (minsold<10?'0'+minsold:minsold)
+							minsold = new String(minsold);
+							minsold_1 = minsold.substr(0,1);
+							minsold_2 = minsold.substr(1,1);	
+
+							//秒
+							e_seconds = (e_minsold-minsold)*60;	
+							seconds=Math.floor((e_minsold-minsold)*60);
+							seconds = (seconds<10?'0'+seconds:seconds)
+							seconds = new String(seconds);
+							seconds_1 = seconds.substr(0,1);
+							seconds_2 = seconds.substr(1,1);	
+							//毫秒	
+							ms = e_seconds-seconds;
+							ms = new String(ms)
+							ms_1 = ms.substr(2,1);
+							ms_2 = ms.substr(3,1);
+								
+								
+                            pms.hm = ms_1+''+ms_2;
+                            pms.sec = seconds_1+''+seconds_2;
+                            pms.mini = minsold_1+''+minsold_2;
+                            pms.hour = hrsold>10?hrsold:'0'+hrsold;
+                            pms.day = daysold;
+                        }else{
+                            pms.year=pms.month=pms.day=pms.hour=pms.mini=pms.sec="00";
+                            pms.hm = "000";
+							callback();
+                            //alert('结束了');
+                            //return;
+                        }
+                        return pms;
+                    },
+                    ui: function(){
+                        if(o.hm){
+                            o.hm.html(f.dv().hm);
+                        }
+                        if(o.sec){
+                            o.sec.html(f.dv().sec);
+                        }
+                        if(o.mini){
+                            o.mini.html(f.dv().mini);
+                        }
+                        if(o.hour){
+                            o.hour.html(f.dv().hour);
+                        }
+                        if(o.day){
+                            o.day.html(f.dv().day);
+                        }
+                        if(o.month){
+                            o.month.html(f.dv().month);
+                        }
+                        if(o.year){
+                            o.year.html(f.dv().year);
+                        }
+                        setTimeout(f.ui, 1);
+                    }
+                };
+                f.ui();
+            });
+        }
+    });
+    
+var weChat = function(){
+    $("#mcover").css("display","none");
+};
+</script>
+
+
+
+</html>

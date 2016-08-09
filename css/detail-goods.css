@@ -1,0 +1,198 @@
+/*index抽取*/
+.m-detail-userCodes {
+    margin-top: 10px;
+    padding: 10px 10px;
+    background: #f4f4f4;
+    font-size: 12px;
+    color: #999999;
+}
+
+.m-detail-userCodes-blank {
+    text-align: center;
+    line-height: 20px;
+    color: #8f8f8f;
+}
+.m-detail-buy .w-button {
+    width: 40%;
+}
+
+.m-detail-go .m-simpleFooter-text {
+    color: #666
+}
+
+.m-detail-go .w-button {
+    width: 90px;
+}
+
+.w-wishSetEntry-detail {
+    position: absolute;
+    right: 15px;
+    top: 160px;
+}
+.g-body {
+    padding-top: 0;
+}
+
+.m-detail .g-wrap-hd {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    background: #fff;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.moreBtn {
+    color: #0079fe;
+}
+
+.moreBtn .ico-dot {
+    top: 10px;
+    right: 0
+}
+
+.m-detail-menu .ico-arrow {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+}
+
+/*index抽取结束*/
+
+/*切换begin*/
+.move{
+    position: relative;
+    overflow: hidden;
+}
+.row-fluid {
+    margin: auto;
+    position: absolute;
+}
+.row-fluid img{
+    width: 210px;
+    height: 210px;
+    float: left;
+}
+
+.goods-tab{
+    position: absolute;
+    right: 80px;
+    bottom: 3px;
+    z-index: 1;
+}
+.goods-tab li{
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    float: left;
+    margin-right: 10px;
+}
+.goods-tab .selected{
+    background: pink;
+
+}
+
+
+
+/*切换end*/
+.red-title{
+    height: 40px;
+    background-color: #e03131;
+}
+.red-title p{
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 40px;
+    text-align: center;
+}
+.box{
+    display: -webkit-box ;
+    display: -webkit-flex ;
+    background: #f6eaea;
+}
+.lucker-head{
+    -webkit-flex: 1;
+    margin-top: 30px;
+    margin-left: 8px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid red;
+    background: url('../images/bac.png') 0 0 no-repeat;
+}
+.lucker-content{
+    -webkit-flex: 3;
+    height: 160px;
+    background: #f6eaea;
+    padding-top: 20px;
+    padding-left: 10%;
+}
+.lucker-content li{
+    color: #999999;
+    height: 24px;
+}
+.red-i{
+    color: #e03131;
+}
+.luckers{
+    background-color: #f0f0f0;
+}
+.lucker-list{
+    padding-top: 10px;
+    padding-left: 8px;
+    margin-top: 24px;
+    overflow: hidden;
+}
+.search-all a{
+    padding-left: 8px;
+    color: #e03131;
+}
+.all-num{
+    padding-left: 8px;
+    background: #f0f0f0;
+    display: none;
+}
+/****参与记录start***/
+.m-detail-record-list{
+    background: #fff;
+}
+.record-list-one{
+    position: relative;
+    display: flex;
+    border-bottom: 0.5px solid #dcdcdc;
+}
+.record-head{
+    -webkit-flex: 1;
+    margin-top: 30px;
+    margin-left: 16px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: url('../images/bac.png') 0 0 no-repeat;
+}
+.record-content{
+    -webkit-flex: 3;
+    height: 140px;
+    padding-top: 40px;
+    padding-left: 10%;
+}
+.record-content li{
+    color: #999;
+    height: 24px;
+}
+.record-num{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.record-content .red-i{
+    color: #e03131;
+}
+.record-num .gray-i{
+    color: #999;
+}
+/****参与记录end***/
+
+
+
